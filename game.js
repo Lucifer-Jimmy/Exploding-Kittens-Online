@@ -25,20 +25,25 @@ function initializeGame(playerCount) {
     let gameDeck = [...cardDeck];
     let players = Array(playerCount).fill().map(() => []);
     
+    // 移除所有的 Exploding Kitten 和 DEFUSE 卡
     const explodingKittens = gameDeck.filter(card => card === 'Exploding Kitten');
     const defuseCards = gameDeck.filter(card => card === 'DEFUSE');
     gameDeck = gameDeck.filter(card => card !== 'Exploding Kitten' && card !== 'DEFUSE');
     
     shuffleArray(gameDeck);
     
+    // 给每个玩家发7张普通牌
     for (let i = 0; i < 7 * playerCount; i++) {
         players[i % playerCount].push(gameDeck.pop());
     }
     
+    // 给每个玩家发1张 DEFUSE 卡
     players.forEach(hand => hand.push('DEFUSE'));
     
+    // 将剩余的 DEFUSE 卡放回牌组
     gameDeck.push(...defuseCards.slice(playerCount));
     
+    // 将 Exploding Kitten 卡放回牌组并洗牌
     gameDeck.push(...explodingKittens);
     shuffleArray(gameDeck);
     

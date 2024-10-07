@@ -1,0 +1,26 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+#game-container {
+    text-align: center;
+}
+
+#game-board {
+    width: 800px;
+    height: 600px;
+    background-color: #fff;
+    border: 2px solid #000;
+    margin-bottom: 20px;
+}
+
+#start-button {
+    font-size: 18px;
+    padding: 10px 20px;
+}
